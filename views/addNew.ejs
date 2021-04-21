@@ -1,0 +1,44 @@
+<%- include('includes/head.ejs') %>
+
+    </head>
+
+    <body>
+        <%- include('includes/navigation.ejs') %>
+
+            <main>
+                <h1 class="w3-content">Añadir imagen nueva</h1>
+                <div class="w3-row w3-section">
+                    <form class="w3-content" method="POST" action="/add-new">
+                        <input type="hidden" name="id" value="<%= (image)? image.id: ''%>">
+                        <label for="imageURL">Título</label>
+                        <input class="w3-input" type="text" id="imageName" name="imageName" required maxlength="10"
+                            pattern="\w+" value="<%= (image)? image.title : ''%>"></p>
+                        <label for="imageURL">Url de la imagen</label>
+                        <input class="w3-input" type="url" id="imageURL" name="imageURL" value="<%= (image)? image.url : ''%>" required <%= (image)? 'disabled': '' %>></p>
+                        <label for="date"></label>
+                        <input class="w3-input" type="date" name="date" id="date" required value="<%= (image)? image.date : ''%>">
+                        <input class="w3-input" type="submit" value="<%= (image)? 'Actualizar': 'Añadir' %>">
+                        <% if (image) { %>
+                            <a href="/delete/<%= image.id %>" class="w3-block w3-btn w3-red w3-center">Eliminar</a>
+                            <% } %>
+                    </form>
+
+                </div>
+
+      
+
+
+                <div class="w3-content w3-red">
+                    <% if (error) { %>
+                        <h2>
+                            <%= error %>
+                        </h2>
+                        <% } %>
+                </div>
+
+
+
+            </main>
+    </body>
+
+    </html>

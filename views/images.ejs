@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs') %>
+
+</head>
+
+<body>
+    <%- include('includes/navigation.ejs') %>
+    <main>
+        <h2 class="w3-panel w3-light-green">Imágenes subidas</h2>
+        <div class="w3-row">
+
+            <% images.forEach(function(image){ %>
+            <a class="clickable" href="/edit/<%= image.id %>">
+            <div class="w3-quarter w3-container w3-center">
+                <h2 style="text-transform: uppercase; font-weight: bold;"><%= image.title %> - <%= image.date %></h2>
+                <img class="main--images" src="<%= image.url %>"></img>
+                <h2 style="background-color: rgb(<%= image.predominantColor %>)">
+                    <%= image.predominantColor %></h2>
+            </div>
+            </a>
+            <% }); %>
+        </div>
+    </main>
+</body>
+
+</html>
